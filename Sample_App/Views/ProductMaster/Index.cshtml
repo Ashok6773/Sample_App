@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https//code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <br />
+    <button type="submit" id="btnShowForm" class="btn btn-primary" onclick="btnShowForm()" style="margin-left: 80%;">Add Product</button>
+    @*Form Start*@
+    <div class="container" id="form_hide" style="display:none">
+        <input type="text" name="ProductId" value="" id="ProductId" hidden style="display:none" />
+        <div class="container">
+            <div class="col-md-12">
+                <label for="categoryId">Category:</label>
+                <select id="CategoryId" class="form-control" style="width:30%">
+                    
+                </select>
+            </div>
+
+            <div class="col-md-12">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="ProductName" name="PRODUCTNAME" class="form-control" style="width:30%">
+            </div>
+
+            <div class="col-md-12">
+                <label for="description">Description:</label>
+                <textarea id="Description" name="DESCRIPTION" rows="4" class="form-control" style="width:30%"></textarea>
+            </div>
+            </div>
+        <div>
+            <br />
+            <button type="submit" id="btnsave" class="btn btn-success" onclick="btnSubmit()">Save</button>
+            <button type="reset" id="btnreset" class="btn btn-warning" onclick="btnreset()">Reset</button>
+            <button type="reset" id="btncancel" class="btn btn-danger" onclick="btncancel()">Cancel</button>
+
+        </div>
+    </div>
+    @*Form End*@
+
+    <div class="product-list" id="table_hide">
+        <h4>Existing Categories</h4>
+        <table width="100%" id="tblProduct" class="display " cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#ProductId").val("0")
+        $("#form_hide").hide();
+        $("#table_hide").show();
+
+        GetCategoryList();
+
+        GetTableData();
+        //fnLoadDataTableInstance();
+    });
+
+    function btnShowForm() {
+        $("#btnShowForm").hide();
+        $("#form_hide").show();
+        $("#table_hide").hide();
+    }
+
+    function btncancel() {
+        $("#btnShowForm").show();
+        $("#form_hide").hide();
+        $("#table_hide").show();
+    }
+
+    function btnreset() {
+        $("#ProductId").val("");
+        $("#CategoryId").val("");
+        $("#ProductName").val("");
+        $("#Description").val("");
+    }
+
+    function GetCategoryList() {
+        var Details = {};
+
+        $.ajax({
+            url: "/ProductMaster/GetCategoryList",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                console.log(JSON.parse(result));
+                var data = JSON.parse(result);
+
+                var option = "";
+                option = '<option \" class=\"form-control\"' + ' value=\"' + "" + '\"> ' +
+                    "Select" + ' </option>'
+                data.forEach(function (item) {
+                    option = option + '<option \" class=\"form-control\"' + ' value=\"' + item.CATEGORY_ID + '\"> ' +
+                        item.CATEGORY_NAME + ' </option>'
+                })
+                $("#CategoryId").append(option);
+
+            }
+        });
+    }
+
+    function GetTableData() {
+        var Details = {};
+
+        $.ajax({
+            url: "/ProductMaster/GetTableData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                console.log(JSON.parse(result));
+                fnLoadDataTableInstance(JSON.parse(result));
+            }
+        });
+    }
+
+    function fnLoadDataTableInstance(dataSource) {
+
+        $('#tblProduct').DataTable({
+            dom: 'Bfrtip',
+            data: dataSource,
+            columns: [
+                { data: 'PRODUCTID' },
+                { data: 'PRODUCTNAME' },
+                { data: 'CATEGORYID' },
+                { data: 'CATEGORYNAME' },
+                { data: 'DESCRIPTION' },
+                {
+                    render: function (data, type, row) {
+                        return '<a class="table-edit" onclick="ModifyData(' + row.PRODUCTID + ')">Modify</a><a class="table-Delete" style="color:red;margin-left: 10px;" onclick="DeleteData(' + row.PRODUCTID + ')">Delete</a>'
+                    }
+                },
+            ],
+            "paging": true,
+            "info": true,
+            "language": {
+                "emptyTable": "No data available"
+            },
+        })
+    }
+
+    function btnSubmit() {
+
+        if ($("#ProductName").val() == "") {
+            alert("Product Name can not be blank");
+            return false;
+        }
+
+        var Details = {};
+        Details.ProductId = $("#ProductId").val();
+        Details.CategoryId = $("#CategoryId").val();
+        Details.ProductName = $("#ProductName").val();
+        Details.Description = $("#Description").val();
+
+        $.ajax({
+            url: "/ProductMaster/SubmitData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                alert("Data saved successfully")
+                console.log(JSON.parse(result));
+                location.reload();
+            }
+        });
+    }
+
+    function DeleteData(ProductId) {
+        console.log(ProductId);
+
+        var Details = {};
+        Details.ProductId = ProductId;
+
+        $.ajax({
+            url: "/ProductMaster/DeleteData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                alert("Data Deleted successfully")
+                console.log(JSON.parse(result));
+                location.reload();
+            }
+        });
+    }
+
+    function ModifyData(ProductId) {
+        console.log(ProductId);
+
+        $("#btnShowForm").hide();
+        $("#ProductId").val(ProductId);
+
+        var Details = {};
+        Details.ProductId = ProductId;
+
+        $.ajax({
+            url: "/ProductMaster/GetTableData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                console.log(JSON.parse(result));
+
+                var data = JSON.parse(result);
+
+                $("#form_hide").show();
+                $("#table_hide").hide();
+                $("#CategoryId").val(data[0].CATEGORYID);
+                $("#ProductName").val(data[0].PRODUCTNAME);
+                $("#Description").val(data[0].DESCRIPTION);
+
+            }
+        });
+    }
+
+</script>

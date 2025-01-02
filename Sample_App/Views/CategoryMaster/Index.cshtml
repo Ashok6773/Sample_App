@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Master</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https//code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <br />
+    <button type="submit" id="btnShowForm" class="btn btn-primary" onclick="btnShowForm()" style="margin-left: 80%;">Add Category</button>
+
+    @*Form Start*@
+    <div class="container" id="form_hide" style="display:none">
+        <input type="text" name="CategoryId" value="" id="CategoryId" hidden style="display:none" />
+        <div class="container">
+            <div class="col-md-12">
+                <label>Category Name</label>
+                <input type="text" id="CategoryName" style="width:30%" name="CategoryName" value="" class="form-control" autocomplete="off" />
+            </div>
+            <div class="col-md-12">
+                <label>Description</label>
+                <textarea type="text" id="Description" style="width:30%" name="Description" value="" class="form-control" autocomplete="off" rows="4"></textarea>
+            </div><br />
+        </div>
+        <div>
+            <br />
+            <button type="submit" id="btnsave" class="btn btn-success" onclick="btnSubmit()">Save</button>
+            <button type="reset" id="btnreset" class="btn btn-warning" onclick="btnreset()">Reset</button>
+            <button type="reset" id="btncancel" class="btn btn-danger" onclick="btncancel()">Cancel</button>
+
+        </div>
+    </div>
+    @*Form End*@
+
+    <div class="category-list" id="table_hide">
+            <h4>Existing Categories</h4>
+        <table width="100%" id="tblCategory" class="display " cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+ 
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#CategoryId").val("0")
+        $("#form_hide").hide();
+        $("#table_hide").show();
+        GetTableData();
+        //fnLoadDataTableInstance();
+    });
+
+    function btnShowForm() {
+        $("#btnShowForm").hide();
+        $("#form_hide").show();
+        $("#table_hide").hide();
+    }
+
+    function btncancel() {
+        $("#btnShowForm").show();
+        $("#form_hide").hide();
+        $("#table_hide").show();
+    }
+
+    function btnreset() {
+        $("#CategoryId").val("");
+        $("#CategoryName").val("");
+        $("#Description").val("");
+    }
+
+    function btnSubmit() {
+
+        if ($("#CategoryName").val() == "") { 
+            alert("Category Name can not be blank");
+            return false;
+        }
+
+        var Details = {};
+        Details.CategoryId = $("#CategoryId").val();
+        Details.CategoryName = $("#CategoryName").val();
+        Details.Description = $("#Description").val();
+
+        $.ajax({
+            url: "/CategoryMaster/SubmitData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                alert ("Data saved successfully")
+                console.log(JSON.parse(result));
+                location.reload();
+            }
+        });
+    }
+
+    function GetTableData() {
+        var Details = {};
+       
+        $.ajax({
+            url: "/CategoryMaster/GetTableData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                console.log(JSON.parse(result));
+                fnLoadDataTableInstance(JSON.parse(result));
+            }
+        });
+    }
+
+    function fnLoadDataTableInstance(dataSource) {
+
+        $('#tblCategory').DataTable({
+            dom: 'Bfrtip',
+            data: dataSource,
+            columns: [
+                { data: 'CATEGORY_ID' },
+                { data: 'CATEGORY_NAME' },
+                { data: 'DESCRIPTION' },
+                {
+                    render: function (data, type, row) {
+                        return '<a class="table-edit" onclick="ModifyData(' + row.CATEGORY_ID + ')">Modify</a><a class="table-Delete" style="color:red;margin-left: 10px;" onclick="DeleteData(' + row.CATEGORY_ID + ')">Delete</a>'
+                    }
+                },
+            ],
+            "paging": true,
+            "info": true,
+            "language": {
+                "emptyTable": "No data available"
+            },
+        })
+    }
+
+
+    function DeleteData(CATEGORY_ID) {
+        console.log(CATEGORY_ID);
+
+        var Details = {};
+        Details.CategoryId = CATEGORY_ID;
+
+        $.ajax({
+            url: "/CategoryMaster/DeleteData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                alert("Data Deleted successfully")
+                console.log(JSON.parse(result));
+                location.reload();
+            }
+        });
+    }
+
+    function ModifyData(CATEGORY_ID) {
+        console.log(CATEGORY_ID);
+
+        $("#btnShowForm").hide();
+        $("#CategoryId").val(CATEGORY_ID);
+
+        var Details = {};
+        Details.CategoryId = CATEGORY_ID;
+
+        $.ajax({
+            url: "/CategoryMaster/GetTableData",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(Details),
+            success: function (result) {
+                // when call is sucessfull
+                console.log(JSON.parse(result));
+
+                var data = JSON.parse(result);
+
+                $("#form_hide").show();
+                $("#table_hide").hide();
+                $("#CategoryName").val(data[0].CATEGORY_NAME);
+                $("#Description").val(data[0].DESCRIPTION);
+            }
+        });
+    }
+
+
+</script>

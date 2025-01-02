@@ -1,0 +1,20 @@
+USE [DEMO]
+GO
+
+/****** Object:  Table [dbo].[CATEGORYMASTER]    Script Date: 29-12-2024 12:51:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CATEGORYMASTER](
+	[CATEGORY_ID] [int] IDENTITY(1,1) NOT NULL,
+	[CATEGORY_NAME] [varchar](500) NULL,
+	[DESCRIPTION] [varchar](2000) NULL,
+	[CREATED_AT] [datetime] NULL,
+	[UPDATED_AT] [datetime] NULL
+) ON [PRIMARY]
+GO
+
+

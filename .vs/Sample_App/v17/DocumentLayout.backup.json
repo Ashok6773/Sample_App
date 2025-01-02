@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Views\\ProductMaster\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Views\\ProductMaster\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Service\\ProductService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Service\\ProductService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\CategoryMasterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Controllers\\CategoryMasterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\ProductMasterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Controllers\\ProductMasterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Models\\Product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sample_App\\Models\\Product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "RelativeDocumentMoniker": "Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "RelativeToolTip": "Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-02T16:25:45.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "RelativeDocumentMoniker": "Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "RelativeToolTip": "Sample_App\\Views\\ProductMaster\\Index.cshtml",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAK4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T05:35:07.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Sample_App\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Models\\Product.cs",
+              "RelativeToolTip": "Sample_App\\Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T05:35:30.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Service\\ProductService.cs",
+              "RelativeDocumentMoniker": "Sample_App\\Service\\ProductService.cs",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Service\\ProductService.cs",
+              "RelativeToolTip": "Sample_App\\Service\\ProductService.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAYwGwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T05:47:32.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryMasterController.cs",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\CategoryMasterController.cs",
+              "RelativeDocumentMoniker": "Sample_App\\Controllers\\CategoryMasterController.cs",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\CategoryMasterController.cs",
+              "RelativeToolTip": "Sample_App\\Controllers\\CategoryMasterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T11:30:55.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductMasterController.cs",
+              "DocumentMoniker": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\ProductMasterController.cs",
+              "RelativeDocumentMoniker": "Sample_App\\Controllers\\ProductMasterController.cs",
+              "ToolTip": "C:\\Users\\Ashok\\Downloads\\Sample_App\\Sample_App\\Sample_App\\Controllers\\ProductMasterController.cs",
+              "RelativeToolTip": "Sample_App\\Controllers\\ProductMasterController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAmwEgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T11:31:17.538Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
